@@ -1,35 +1,39 @@
+# from Observer import Observer
+from typing import List
+from Observable import Observable
 from Observer import Observer
 from WeatherDataMeasurements import WeatherDataMeasurements
 from IWeatherData import IWeatherData
 
-
-
-
-class WeatherData(Observer, IWeatherData):
+class WeatherData(IWeatherData, Observable):
     def __init__(self):
-        self.observers = []
-        self.measurements = self.get_measurements()
-        self.temperature = self.measurements.temperature
-        self.humidity = self.measurements.humidity
-        self.pressure = self.measurements.pressure
-
-    def register_observer(self, observer: Observer):
-        self.observers.append(observer)
-
-    def remove_observer(self, observer: Observer):
-        i = self.observers.index(observer)
-        if (i >= 0):
-            self.observers.remove(i)
-
-    def notify_observers(self):
-        for observer in self.observers:
-            observer = Observer.update(self.temperature, self.humidity, self.pressure)
+        # Initialize an empty list of observers and the measurements
+        self.__observers: List[Observer] = []
+        self.__measurements = WeatherDataMeasurements(0.0, 0.0, 0.0)
 
 
-    def set_measurements(measurements: WeatherDataMeasurements):
-        pass
+    def register_observer(self, observer: Observer) -> None:
+        """Registers an observer to the list."""
+        if observer not in self.__observers:
+            self.__observers.append(observer)
 
-    def get_measurements(self):
-        return WeatherDataMeasurements()
-        
+    def remove_observer(self, observer: Observer) -> None:
+        """Removes an observer from the list."""
+        try:
+            self.__observers.remove(observer)
+        except ValueError:
+            print(f"Observer {observer} not found in the list")
 
+    def notify_observers(self) -> None:
+        """Notifies all observers of changes."""
+        for observer in self.__observers:
+            observer.update(self)
+
+    def set_measurements(self, measurements: WeatherDataMeasurements) -> None:
+        """Sets new measurements and notifies observers of the changes."""
+        self.__measurements = measurements
+        self.notify_observers()
+
+    def get_measurements(self) -> WeatherDataMeasurements:
+        """Returns the current measurements."""
+        return self.__measurements
