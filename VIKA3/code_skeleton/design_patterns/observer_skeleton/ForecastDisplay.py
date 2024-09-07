@@ -14,10 +14,3 @@ class ForecastDisplay:
         pass
 
     
-class ShapeRenderer:
-    def __init__(self):
-        self.__shape_factory - shape_factory
-
-    def draw_circle(self):
-        circle - self.__shape_factory.CreateCircle()
-        circle.draw()
