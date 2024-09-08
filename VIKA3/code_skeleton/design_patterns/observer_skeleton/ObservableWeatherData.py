@@ -4,5 +4,7 @@ from IWeatherData import IWeatherData
 from Observable import Observable
 
 
+
 class ObservableWeatherData(Observable, IWeatherData, ABC):
-    pass
+    def __init__(self):
+        super().__init__()

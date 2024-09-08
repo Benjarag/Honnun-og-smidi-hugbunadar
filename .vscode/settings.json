@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./VIKA3/code_skeleton/design_patterns/observer_skeleton"
+    ]
+}
