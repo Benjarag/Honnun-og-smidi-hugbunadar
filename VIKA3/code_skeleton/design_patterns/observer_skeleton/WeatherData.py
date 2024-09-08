@@ -13,27 +13,37 @@ class WeatherData(IWeatherData, Observable):
 
 
     def register_observer(self, observer: Observer) -> None:
-        """Registers an observer to the list."""
+        """
+        Registers an observer to the list
+        """
         if observer not in self.__observers:
             self.__observers.append(observer)
 
     def remove_observer(self, observer: Observer) -> None:
-        """Removes an observer from the list."""
+        """
+        Removes an observer from the list
+        """
         try:
             self.__observers.remove(observer)
         except ValueError:
             print(f"Observer {observer} not found in the list")
 
     def notify_observers(self) -> None:
-        """Notifies all observers of changes."""
+        """
+        Notifies all observers of changes
+        """
         for observer in self.__observers:
             observer.update(self)
 
     def set_measurements(self, measurements: WeatherDataMeasurements) -> None:
-        """Sets new measurements and notifies observers of the changes."""
+        """
+        Sets new measurements and notifies observers of the changes
+        """
         self.__measurements = measurements
         self.notify_observers()
 
     def get_measurements(self) -> WeatherDataMeasurements:
-        """Returns the current measurements."""
+        """
+        Returns the current measurements
+        """
         return self.__measurements

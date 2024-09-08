@@ -8,9 +8,8 @@ class CurrentConditionsDisplay(Observer, DisplayElement):
     def __init__(self):
         self.temperature = 0.0
         self.humidity = 0.0
-        self.weatherData = WeatherData()
 
-    def update(self, observable: WeatherDataMeasurements):
+    def update(self, observable: WeatherDataMeasurements) -> None:
         if isinstance(observable, IWeatherData):
             measurement = observable.get_measurements()
             self.temperature = measurement.temperature
