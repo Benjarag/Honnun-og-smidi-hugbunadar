@@ -10,19 +10,21 @@ from pizzas.PizzaType import PizzaType
 
 
 class ChicagoStylePizzaStore(PizzaStore):
+    def __init__(self):
+        super().__init__(ChicagoPizzaIngredientFactory())
+
     def create_pizza(self, pizza_type):
-        ingredientFactory = ChicagoPizzaIngredientFactory()
         pizza = None    
         if pizza_type == PizzaType.CHEESE:
-            pizza = CheesePizza(ingredientFactory)
+            pizza = CheesePizza(self.ingredient_factory)
             pizza.set_name("Chicago Style Cheese Pizza")
         elif pizza_type == PizzaType.PEPPERONI:
-            pizza = PepperoniPizza(ingredientFactory)
+            pizza = PepperoniPizza(self.ingredient_factory)
             pizza.set_name("Chicago Style Pepperoni Pizza")
         elif pizza_type == PizzaType.CLAM:
-            pizza = ClamPizza(ingredientFactory)
+            pizza = ClamPizza(self.ingredient_factory)
             pizza.set_name("Chicago Style Clam Pizza")
         elif pizza_type == PizzaType.VEGGIE:
-            pizza = VeggiePizza(ingredientFactory)
+            pizza = VeggiePizza(self.ingredient_factory)
             pizza.set_name("Chicago Style Veggie Pizza")
         return pizza

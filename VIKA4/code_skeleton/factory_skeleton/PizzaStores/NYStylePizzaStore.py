@@ -8,19 +8,21 @@ from pizzas.Pizza import Pizza
 from pizzas.PizzaType import PizzaType
 
 class NYStylePizzaStore(PizzaStore):
+    def __init__(self):
+        super().__init__(NYPizzaIngredientFactory())
+        
     def create_pizza(self, pizza_type):
-        ingredientFactory = NYPizzaIngredientFactory()
         pizza = None    
         if pizza_type == PizzaType.CHEESE:
-            pizza = CheesePizza(ingredientFactory)
+            pizza = CheesePizza(self.ingredient_factory)
             pizza.set_name("New York Style Cheese Pizza")
         elif pizza_type == PizzaType.PEPPERONI:
-            pizza = PepperoniPizza(ingredientFactory)
+            pizza = PepperoniPizza(self.ingredient_factory)
             pizza.set_name("New York Style Pepperoni Pizza")
         elif pizza_type == PizzaType.CLAM:
-            pizza = ClamPizza(ingredientFactory)
+            pizza = ClamPizza(self.ingredient_factory)
             pizza.set_name("New York Style Clam Pizza")
         elif pizza_type == PizzaType.VEGGIE:
-            pizza = VeggiePizza(ingredientFactory)
+            pizza = VeggiePizza(self.ingredient_factory)
             pizza.set_name("New York Style Veggie Pizza")
         return pizza
