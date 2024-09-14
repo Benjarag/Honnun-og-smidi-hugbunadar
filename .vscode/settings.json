@@ -1,5 +1,6 @@
 {
     "python.analysis.extraPaths": [
-        "./VIKA3/code_skeleton/design_patterns/observer_skeleton"
+        "./VIKA3/code_skeleton/design_patterns/observer_skeleton",
+        "./VIKA4/code_skeleton/factory_skeleton/pizzas"
     ]
 }
