@@ -1,4 +1,3 @@
-# BuyerHasAgreedToTermsValidation.py
 from Validation import Validation
 from models.Buyer import Buyer
 

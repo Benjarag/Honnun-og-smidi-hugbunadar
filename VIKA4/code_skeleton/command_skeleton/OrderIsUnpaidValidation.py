@@ -6,4 +6,4 @@ class OrderIsUnpaidValidation(Validation):
         self.order = order
 
     def validate(self) -> bool:
-        return self.order.status == OrderStatus.Unpaid
+        return (self.order.status == OrderStatus.Unpaid)

@@ -1,4 +1,3 @@
-# MerchantAllowsModificationsValidation.py
 from Validation import Validation
 from models.Merchant import Merchant
 

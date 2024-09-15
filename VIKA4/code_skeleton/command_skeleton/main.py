@@ -9,9 +9,9 @@ from models.Order import Order, OrderStatus
 
 def is_order_valid_for_modification(order: Order):
         validator = Validator()
-        validator.add_validation(MerchantAllowsModificationsValidation(order.merchant))
-        validator.add_validation(BuyerHasAgreedToTermsValidation(order.buyer))
-        validator.add_validation(OrderIsUnpaidValidation(order))
+        validator.add_validation("MerchantAllowsModifications", order.merchant)
+        validator.add_validation("BuyerHasAgreedToTerms", order.buyer)
+        validator.add_validation("OrderIsUnpaid", order)
         return validator.validate()
 
 
@@ -23,7 +23,6 @@ if __name__ == '__main__':
     print(is_order_valid_for_modification(order))
 
     order.merchant.allow_modifications = True
-
     print(is_order_valid_for_modification(order))
 
     order.buyer.has_agreed_to_terms = True
