@@ -1,23 +1,23 @@
-from logging import Logger
 import sqlite3
-from injector import Module, provider, singleton
-from authentication_service import AuthenticationService
-from order_repository import OrderRepository
-from user_repository import UserRepository
+from injector import Binder, Module, provider, singleton, noscope
+from console_logger import ConsoleLogger
+from db_logger import DbLogger
+from logger import Logger
 
 
 class AppModule(Module):
     def __init__(self, environment: str, file_path: str) -> None:
-        self.__environment = environment  # Fixed typo 'enviroment' to 'environment'
+        self.__environment = environment
         self.__file_path = file_path
 
-    @provider
     @singleton
+    @provider
     def provide_sqlite_connection(self) -> sqlite3.Connection:
         return sqlite3.connect(self.__file_path)
-    
-    def configure(self, binder):
-        binder.bind(UserRepository, to=UserRepository, scope=singleton)
-        binder.bind(OrderRepository, to=OrderRepository, scope=singleton)
-        binder.bind(AuthenticationService, to=AuthenticationService, scope=singleton)
-        binder.bind(Logger, to=Logger, scope=singleton)
+
+    def configure(self, binder: Binder) -> None:
+        binder.bind(
+            Logger,
+            to=(DbLogger if self.__environment == "production" else ConsoleLogger),
+            scope=noscope,
+        )
