@@ -1,12 +1,12 @@
 from injector import inject
 
-from models.pricing import Pricing
-from database.repositories.pricing_repository import PricingRepository
+from core_onion.interfaces.IPricingRepository import IPricingRepository
+from core_onion.models.pricing import Pricing
 
 
 class PricingService:
     @inject
-    def __init__(self, repository: PricingRepository) -> None:
+    def __init__(self, repository: IPricingRepository) -> None:
         self.__repository = repository
 
     def get_all(self) -> list[Pricing]:

@@ -3,11 +3,12 @@ from typing import Callable
 
 from injector import inject
 
-from models.user import User
+from core_onion.interfaces.IUserRepository import IUserRepository
+from core_onion.models.user import User
 from sqlalchemy.orm import Session
 
 
-class UserRepository:
+class UserRepository(IUserRepository):
     @inject
     def __init__(self, session_factory: Callable[..., AbstractContextManager[Session]]):
         self.__session_factory = session_factory

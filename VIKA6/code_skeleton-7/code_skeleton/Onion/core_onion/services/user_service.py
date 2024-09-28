@@ -1,12 +1,12 @@
 from injector import inject
 
-from models.user import User
-from database.repositories.user_repository import UserRepository
+from core_onion.interfaces.IUserRepository import IUserRepository
+from core_onion.models.user import User
 
 
 class UserService:
     @inject
-    def __init__(self, repository: UserRepository):
+    def __init__(self, repository: IUserRepository):
         self.__repository = repository
 
     def get_all(self) -> list[User]:

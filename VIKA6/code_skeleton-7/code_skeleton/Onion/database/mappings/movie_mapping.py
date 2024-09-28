@@ -1,5 +1,5 @@
 from sqlalchemy import MetaData, Table, Column, Integer, String, Float, ForeignKey
-from models.movie import Movie
+from core_onion.models.movie import Movie
 from database.mappings.mapping import Mapping
 
 

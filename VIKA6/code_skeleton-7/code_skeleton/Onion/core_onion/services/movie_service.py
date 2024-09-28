@@ -1,12 +1,12 @@
 from injector import inject
 
-from database.repositories.movie_repository import MovieRepository
-from models.movie import Movie
+from core_onion.interfaces.IMovieRepository import IMovieRepository
+from core_onion.models.movie import Movie
 
 
 class MovieService:
     @inject
-    def __init__(self, repository: MovieRepository):
+    def __init__(self, repository: IMovieRepository):
         self.__repository = repository
 
     def get_all(self) -> list[Movie]:

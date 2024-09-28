@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, status
 
 from infrastructure.get_service import get_service
-from services.subscription_service import SubscriptionService
-from dtos.create_subscription_dto import CreateSubscriptionDto
+from core_onion.services.subscription_service import SubscriptionService
+from core_onion.dtos.create_subscription_dto import CreateSubscriptionDto
 
-from models.subscription import Subscription
+from core_onion.models.subscription import Subscription
 
 router = APIRouter(
     prefix='/subscriptions',
