@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, status
 
-from infrastructure.get_service import get_service
-from core_onion.services.user_service import UserService
+from common.infrastructure.get_service import get_service
+from users.user_service import UserService
 from users.create_user_dto import CreateUserDto
 
 from users.user import User

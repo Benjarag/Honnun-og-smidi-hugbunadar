@@ -2,7 +2,7 @@ from sqlalchemy import MetaData, Table, Column, Integer, String, Float, ForeignK
 from pricings.pricing import Pricing
 from subscriptions.subscription import Subscription
 from users.user import User
-from database.mappings.mapping import Mapping
+from common.database.mappings.mapping import Mapping
 from sqlalchemy.orm import relationship
 
 

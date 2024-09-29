@@ -1,6 +1,6 @@
 from sqlalchemy import MetaData, Table, Column, Integer, String, Float, ForeignKey
 from pricings.pricing import Pricing
-from database.mappings.mapping import Mapping
+from common.database.mappings.mapping import Mapping
 
 
 class PricingMapping(Mapping):

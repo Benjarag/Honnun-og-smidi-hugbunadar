@@ -1,6 +1,6 @@
 from sqlalchemy import MetaData, Table, Column, Integer, String, Float, ForeignKey
 from movies.movie import Movie
-from database.mappings.mapping import Mapping
+from common.database.mappings.mapping import Mapping
 
 
 class MovieMapping(Mapping):

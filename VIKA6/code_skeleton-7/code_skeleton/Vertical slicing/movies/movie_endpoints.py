@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, status
+from common.infrastructure.get_service import get_service
 from movies.create_movie_dto import CreateMovieDto
-from infrastructure.get_service import get_service
 
 from movies.movie import Movie
-from core_onion.services.movie_service import MovieService
+from movies.movie_service import MovieService
 
 router = APIRouter(
     prefix='/movies',

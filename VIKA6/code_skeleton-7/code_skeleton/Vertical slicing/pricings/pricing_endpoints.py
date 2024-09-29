@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, status
 
-from infrastructure.get_service import get_service
-from core_onion.services.pricing_service import PricingService
+from common.infrastructure.get_service import get_service
+from pricings.pricing_service import PricingService
 from pricings.create_pricing_dto import CreatePricingDto
 
 from pricings.pricing import Pricing

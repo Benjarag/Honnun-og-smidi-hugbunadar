@@ -1,8 +1,9 @@
 from fastapi import FastAPI
 
-from endpoints import movie_endpoints, pricing_endpoints, subscription_endpoints, user_endpoints
-
-
+from movies import movie_endpoints
+from pricings import pricing_endpoints
+from subscriptions import subscription_endpoints
+from users import user_endpoints
 
 
 def __get_endpoint_modules():

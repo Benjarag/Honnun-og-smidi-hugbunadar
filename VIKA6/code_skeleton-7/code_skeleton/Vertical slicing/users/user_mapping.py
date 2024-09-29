@@ -1,6 +1,6 @@
 from sqlalchemy import MetaData, Table, Column, Integer, String, Float, ForeignKey
 from users.user import User
-from database.mappings.mapping import Mapping
+from common.database.mappings.mapping import Mapping
 
 
 class UserMapping(Mapping):

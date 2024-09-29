@@ -10,17 +10,17 @@ from movies.IMovieRepository import IMovieRepository
 from pricings.IPricingRepository import IPricingRepository
 from subscriptions.ISubscriptionRepository import ISubscriptionRepository
 from users.IUserRepository import IUserRepository
-from database.database import Database
-from database.mappings.mapping import Mapping
-from database.mappings.movie_mapping import MovieMapping
-from database.mappings.pricing_mapping import PricingMapping
-from database.mappings.subscription_mapping import SubscriptionMapping
-from database.mappings.user_mapping import UserMapping
-from database.repositories.movie_repository import MovieRepository
-from database.repositories.pricing_repository import PricingRepository
-from database.repositories.subscription_repository import SubscriptionRepository
-from database.repositories.user_repository import UserRepository
-from infrastructure.settings import Settings
+from common.database.database import Database
+from common.database.mappings.mapping import Mapping
+from movies.movie_mapping import MovieMapping
+from pricings.pricing_mapping import PricingMapping
+from subscriptions.subscription_mapping import SubscriptionMapping
+from users.user_mapping import UserMapping
+from movies.movie_repository import MovieRepository
+from pricings.pricing_repository import PricingRepository
+from subscriptions.subscription_repository import SubscriptionRepository
+from users.user_repository import UserRepository
+from common.infrastructure.settings import Settings
 
 
 class AppModule(Module):

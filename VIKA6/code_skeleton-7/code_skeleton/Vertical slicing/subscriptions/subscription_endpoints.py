@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, status
 
-from infrastructure.get_service import get_service
-from core_onion.services.subscription_service import SubscriptionService
+from common.infrastructure.get_service import get_service
+from subscriptions.subscription_service import SubscriptionService
 from subscriptions.create_subscription_dto import CreateSubscriptionDto
 
 from subscriptions.subscription import Subscription
