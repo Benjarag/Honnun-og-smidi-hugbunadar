@@ -1,8 +1,14 @@
 import pyfiglet
 import emoji
 
-# this is a comment
 name = input("Enter your name: ")
-pyfiglet.print_figlet(name)
 
-print(emoji.emojize(":thumbsup:", use_aliases=True))
+with open("data/names.txt", "a+", encoding="utf-8") as names_file:
+    jazzled_name = pyfiglet.figlet_format(name)
+    thumbs_up = emoji.emojize(":thumbsup:", use_aliases=True)
+    names_file.write(f"{jazzled_name} {thumbs_up} {":thumbsup:"}")
+
+
+# pyfiglet.print_figlet(name)
+
+# print(emoji.emojize(":thumbsup:", use_aliases=True))

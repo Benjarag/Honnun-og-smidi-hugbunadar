@@ -1,2 +1,3 @@
 pyfiglet==0.8.post1
 emoji==1.4.2
+# 1.4.2
