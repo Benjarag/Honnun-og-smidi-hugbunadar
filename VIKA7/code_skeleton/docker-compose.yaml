@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  notflix-backend:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - sql_app_notflix:/app/sqlite_data
+    environment:
+      - DATABASE_URL=sqlite:///app/sql_app.db
+    command: ["uvicorn", "startup:app", "--host", "0.0.0.0", "--port", "8000"]
+    depends_on:
+      - migration
+
+  migration:
+    build: .
+    volumes:
+      - sql_app_notflix:/app/sqlite_data
+    command: ["alembic", "upgrade", "head"]
+
+volumes:
+  sql_app_notflix:
+
