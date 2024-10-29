@@ -1,13 +1,36 @@
 version: "3.8"
 services:
   message-api:
-    # TODO
-  
-  message-processsor:
+    build: ./MessageApi
+    ports:
+      - "8000:8000"
+    # environment:
+    #   RABBITMQ_URL: "amqp://guest:guest@rabbitmq:5672/"  # Connection URL for RabbitMQ
+    depends_on:
+      - rabbitmq
+    volumes:
+      - message_data:/app/messages    # Persist messages
+      # TODO
+    
+  message-processor:
+    build: ./MessageProcessor  # Adjust this to the actual path
+    depends_on:
+      - rabbitmq
+      - message-api
+    # environment:
+    #   RABBITMQ_URL: "amqp://guest:guest@rabbitmq:5672/"  # Connection URL for RabbitMQ
     # TODO
 
   rabbitmq:
+    image: "rabbitmq:3-management"
+    container_name: my_rabbitmq1
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
     # TODO
 
 volumes:
-  # TODO
+  message_data:  # For persistent message storage
