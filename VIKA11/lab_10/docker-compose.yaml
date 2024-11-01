@@ -13,7 +13,7 @@ services:
       # TODO
 
   message-processor:
-    build: ./MessageProcessor  # Adjust this to the actual path
+    build: ./MessageProcessor  
     depends_on:
       - rabbitmq
       - message-api
