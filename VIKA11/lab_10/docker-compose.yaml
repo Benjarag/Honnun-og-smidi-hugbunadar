@@ -11,7 +11,7 @@ services:
     volumes:
       - message_data:/app/messages    # Persist messages
       # TODO
-    
+
   message-processor:
     build: ./MessageProcessor  # Adjust this to the actual path
     depends_on:
@@ -30,7 +30,7 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
-    # TODO
+# TODO
 
 volumes:
   message_data:  # For persistent message storage
